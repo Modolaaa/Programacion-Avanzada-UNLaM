@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TwoSum {
 
@@ -47,5 +45,27 @@ public class TwoSum {
         }
         return false;
     }
+
+//    public static ArrayList<ArrayList<Integer>> totalSearchOfSum(List<Integer> myList, Integer myNumber){
+//        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+//
+//        public static void recursiveFunc (List<Integer> mySubset, Integer total, int indice){
+//
+//            if(total == myNumber){
+//                result.add(mySubset);
+//                return
+//            } else if (total>myNumber || indice == mySubset.length) {
+//                return
+//            }
+//            mySubset.add(myList.get(indice));
+//            recursiveFunc(mySusbet,total + myList.get(indice),indice +1);
+//            mySubset.pop();
+//
+//            recursiveFunc(mySusbet,total,indice +1);
+//        }
+//        recursiveFunc(new ArrayList<Integer>(),0,0);
+//        return result;
+//
+//    }
 
 }
