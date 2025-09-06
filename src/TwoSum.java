@@ -2,70 +2,48 @@ import java.util.*;
 
 public class TwoSum {
 
-    public static Boolean twoSumTwoPointers(int[] myArray,int elem){
+    public static Boolean twoSumTwoPointers(int[] myArray, int elem) {
         Arrays.sort(myArray);
         int start = 0;
-        int end = myArray.length -1;
+        int end = myArray.length - 1;
 
-        while(start<end){
-            if(myArray[start] + myArray[end] <elem){
+        while (start < end) {
+            if (myArray[start] + myArray[end] < elem) {
                 start++;
-            }
-            else if(myArray[start] + myArray[end]>elem){
+            } else if (myArray[start] + myArray[end] > elem) {
                 end--;
-            }
-            else{
+            } else {
                 return true;
             }
         }
         return false;
     }
 
-    public static Boolean twoSumMap(int[]myArray, int elem){
+    public static Boolean twoSumMap(int[] myArray, int elem) {
         Map<Integer, Integer> myMap = new HashMap<Integer, Integer>();
-        for(int i = 0; i<myArray.length-1;i++){
-            myMap.put(myArray[i],i);
+
+
+        for (int i = 0; i < myArray.length - 1; i++) {
+            myMap.put(myArray[i], i);
         }
-        for(int i = 0; i<myArray.length-1;i++){
+        for (int i = 0; i < myArray.length - 1; i++) {
             int result = elem - myArray[i];
-            if(myMap.containsKey(result)){
+            if (myMap.containsKey(result)) {
                 return myMap.get(result) != i;
             }
         }
         return false;
     }
 
-    public static Boolean twoSumBruteForce(int[]myArray, int elem){
-        for(int i = 0; i<myArray.length-1;i++){
-            for(int j = 0; j<myArray.length-1;j++){
-                if(myArray[i] + myArray[j] == elem && i!=j){
+    public static Boolean twoSumBruteForce(int[] myArray, int elem) {
+        for (int i = 0; i < myArray.length - 1; i++) {
+            for (int j = 0; j < myArray.length - 1; j++) {
+                if (myArray[i] + myArray[j] == elem && i != j) {
                     return true;
                 }
             }
         }
         return false;
     }
-
-//    public static ArrayList<ArrayList<Integer>> totalSearchOfSum(List<Integer> myList, Integer myNumber){
-//        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-//
-//        public static void recursiveFunc (List<Integer> mySubset, Integer total, int indice){
-//
-//            if(total == myNumber){
-//                result.add(mySubset);
-//                return
-//            } else if (total>myNumber || indice == mySubset.length) {
-//                return
-//            }
-//            mySubset.add(myList.get(indice));
-//            recursiveFunc(mySusbet,total + myList.get(indice),indice +1);
-//            mySubset.pop();
-//
-//            recursiveFunc(mySusbet,total,indice +1);
-//        }
-//        recursiveFunc(new ArrayList<Integer>(),0,0);
-//        return result;
-//
-//    }
-
 }
+
