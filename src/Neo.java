@@ -1,4 +1,3 @@
-package pa.matrix;
 
 /**
  * Neo debe localizar al Agente Smith en los registros de la Matrix. Los datos
