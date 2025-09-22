@@ -1,5 +1,5 @@
 import java.util.List;
-
+import java.util.ArrayList;
 public class Torneo {
 
     public static Luchador torneoSinEquipos(List<Luchador> luchadores) {
@@ -40,5 +40,38 @@ public class Torneo {
 
         // Si no quedó ninguno, todos murieron
         return null;
+    }
+
+    public static String torneoConEquipos(List<LuchadorConEquipo> luchadores){
+        MaxHeap<LuchadorConEquipo> heapLuchadores = new MaxHeap<>();
+
+        for (LuchadorConEquipo luchador : luchadores){
+            heapLuchadores.insert(new Tuple<>(luchador,1));
+        }
+        LuchadorConEquipo luchador1 = heapLuchadores.peek().dato;
+        while(heapLuchadores.peek() != null){
+            luchador1 = heapLuchadores.extractMax().dato;
+            ArrayList<LuchadorConEquipo> luchadoresDelMismoEquipo = new ArrayList<>();
+            while(heapLuchadores.peek()!=null){
+                LuchadorConEquipo luchador2 = heapLuchadores.extractMax().dato;
+                if(luchador1.getEquipo().equals(luchador2.getEquipo())){
+                    luchadoresDelMismoEquipo.add(luchador2);
+                }
+                else{
+                    luchador1.luchar(luchador2);
+
+                    if(luchador1.getFuerza() != 0) {
+                        heapLuchadores.insert(new Tuple<>(luchador1, 1));
+                    }
+
+                    for(LuchadorConEquipo luchador : luchadoresDelMismoEquipo){
+                        heapLuchadores.insert(new Tuple<>(luchador,1));
+                    }
+
+                    break;
+                }
+            }
+        }
+        return luchador1!=null? luchador1.getEquipo(): null;
     }
 }
